@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landing Page Criativa Completa</title>
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background: #fff; /* fundo branco para toda a página */
+  color: #333;
+}
+
+    /* Menu lateral */
+ .sidebar {
+  width: 220px;
+  background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+    .sidebar h2 {
+      color: #a70909;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #491616;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover {
+      background-color: #f8b500;
+      color: #222;
+      font-weight: 700;
+      transform: scale(1.05);
+    }
+
+    /* Botão toggle menu para mobile */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #f8b500;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 12px;
+      cursor: pointer;
+      z-index: 1100;
+      display: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      background-color: #d18f00;
+    }
+
+    /* Conteúdo principal */
+   
+.main {
+  margin-left: 220px; /* espaço da sidebar */
+  width: calc(100% - 220px);
+  padding: 40px 40px;
+  background-color: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+  color: #222;
+}
+.main > section, 
+.main > section > p, 
+.main > section > h1,
+.main > section > h2 {
+  max-width: none; /* deixa ocupar toda a largura */
+  width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px 20px;
+  }
+}
+
+
+
+    section {
+      margin-bottom: 80px;
+      scroll-margin-top: 80px;
+    }
+
+    .main h1, section h2 {
+      color: #222;
+      text-shadow: 1px 1px 3px #f8b500;
+    }
+
+    #inicio h1 {
+      font-size: 2.8em;
+      margin-bottom: 15px;
+    }
+
+    #inicio p {
+      font-size: 1.25em;
+      max-width: 800px;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    /* Grid de imagens */
+    .image-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .image-box {
+      flex: 1 1 calc(33% - 20px);
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .image-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      border-bottom: 2px solid #f8b500;
+      flex-shrink: 0;
+    }
+
+    .image-box a {
+      padding: 15px;
+      font-weight: 700;
+      color: #f8b500;
+      text-align: center;
+      text-decoration: none;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-top: 1px solid #eee;
+    }
+
+    .image-box a:hover {
+      background-color: #f8b500;
+      color: #222;
+    }
+
+    /* Formulário */
+    form {
+      background: rgba(255,255,255,0.9);
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-bottom: 70px;
+    }
+
+    form h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1.5px solid #ccc;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #f8b500;
+      outline: none;
+      box-shadow: 0 0 5px #f8b500aa;
+    }
+
+    form button {
+      background-color: #f8b500;
+      border: none;
+      padding: 15px 20px;
+      font-weight: 700;
+      font-size: 1.1em;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #222;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #d18f00;
+      color: #fff;
+    }
+
+    /* Rodapé */
+   footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: #eee;
+  padding: 20px 0;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 1500; /* maior que sidebar para ficar visível */
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+}
+
+
+    .social-icons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 1.6em;
+    }
+
+    .social-icons a {
+      color: #f8b500;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #d18f00;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .main {
+        margin-left: 0;
+        padding: 20px 30px;
+        margin-right: auto;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .image-box {
+        flex: 1 1 45%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .image-box {
+        flex: 1 1 100%;
+      }
+
+      form {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão toggle menu para mobile -->
+  <button class="menu-toggle" aria-label="Toggle Menu">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Menu lateral -->
+  <nav class="sidebar" aria-label="Menu Principal">
+    <h2>Meu Menu</h2>
+    <a href="#inicio"><i class="fas fa-home"></i> INÍCIO</a>
+    <a href="#sobre"><i class="fas fa-user"></i> EU</a>
+    <a href="#servicos"><i class="fas fa-cogs"></i> FOTOS</a>
+    <a href="#contato"><i class="fas fa-envelope"></i> CONTATO</a>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main class="main" role="main">
+
+    <section id="inicio" tabindex="-1">
+      <h1>Bem-vindo à Minha Landing Page - Minhas fotos!</h1>
+      <p>
+        Aqui você pode ver minhas três versões! Academia, Trabalho e Dia-a-Dia!
+      </p>
+    </section>
+
+    <section id="sobre" tabindex="-1" aria-label="Seção Sobre">
+      <h2>Sobre Nós</h2>
+      <p>
+        EU!
+      </p>
+    </section>
+
+    <section id="servicos" tabindex="-1" aria-label="Seção Serviços">
+      <h2>FOTOS</h2>
+      <div class="image-grid" aria-label="Galeria de imagens dos serviços">
+        <article class="image-box" tabindex="0">
+          <img src="./1.jpg" alt="Minha 1" />
+          <a href="#">Ver Mais</a>
+        </article>
+        <article class="image-box" tabindex="0">
+          <img src="./2.jpg" alt="Minha 2" />
+          <a href="#">Ver Mais</a>
+        </article>
+        <article class="image-box" tabindex="0">
+          <img src="./3.jpg" alt="Minha 3" />
+          <a href="#">Ver Mais</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contato" tabindex="-1" aria-label="Seção Contato">
+      <form id="contact-form" novalidate>
+        <h2>Fale Comigo!</h2>
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" required placeholder="Seu nome completo" />
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+
+        <label for="message">Mensagem</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Escreva sua mensagem..."></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>© 2025 Minha Empresa. Todos os direitos reservados.</div>
+    <div class="social-icons" aria-label="Redes sociais">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle menu lateral para dispositivos móveis
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    // Validação simples do formulário
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name) {
+        alert('Por favor, preencha seu nome.');
+        form.name.focus();
+        return;
+      }
+      if (!email || !validateEmail(email)) {
+        alert('Por favor, informe um e-mail válido.');
+        form.email.focus();
+        return;
+      }
+      if (!message) {
+        alert('Por favor, escreva sua mensagem.');
+        form.message.focus();
+        return;
+      }
+
+      alert('Mensagem enviada com sucesso! Obrigado pelo contato.');
+      form.reset();
+    });
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email.toLowerCase());
+    }
+  </script>
+
+</body>
+</html>
